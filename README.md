@@ -38,7 +38,7 @@ In a post, an internal link needs the project path:
 
 To show Liquid inside a fenced code block, wrap the example in `{% raw %}` and `{% endraw %}`.
 
-Delete `_posts/2026-10-11-sample-delete-me.md` before you publish real work. It only shows the layout. Do not copy `sample: true` or `sitemap: false` from that file. Those lines keep the placeholder out of the sitemap.
+A header image belongs in `assets/images/`. Set `image` in the front matter to that path, for example `/assets/images/2026-10-11-header.png`. The post layout shows it under the title. If the byline should differ from the author name, set `byline` to the exact text.
 
 ## Preview locally
 

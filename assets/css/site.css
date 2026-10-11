@@ -362,6 +362,16 @@ main {
   margin-top: 0.4rem;
 }
 
+.post-hero {
+  margin: 1.05rem 0 0;
+}
+
+.post-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .sample-banner {
   margin: 1rem 0 0;
   padding: 0.75rem 0.9rem;
@@ -440,6 +450,13 @@ main {
 .post .body > p:first-child {
   font-size: 1.18rem;
   line-height: 1.55;
+}
+
+.post .body > p:first-child:has(> em:only-child) {
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
 }
 
 .prose h2 {

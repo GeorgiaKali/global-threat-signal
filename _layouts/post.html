@@ -12,6 +12,13 @@ layout: default
       </p>
     {%- endif -%}
     <h1>{{ page.title | escape }}</h1>
+    {%- assign hero = page.image.path | default: page.image -%}
+    {%- assign hero_alt = page.image.alt | default: page.title -%}
+    {%- if hero and hero != "/assets/img/social-card.png" -%}
+      <figure class="post-hero">
+        <img src="{{ hero | relative_url }}" alt="{{ hero_alt | escape }}"{% if page.image.width %} width="{{ page.image.width }}"{% endif %}{% if page.image.height %} height="{{ page.image.height }}"{% endif %}>
+      </figure>
+    {%- endif -%}
     {%- if page.sample -%}
       <p class="sample-banner" role="note">Sample only. Delete <code>_posts/2026-10-11-sample-delete-me.md</code> before you publish a real article.</p>
     {%- endif -%}
@@ -19,7 +26,9 @@ layout: default
       <div>
         <dt>Author</dt>
         <dd>
-          {%- if author_name == site.author.name -%}
+          {%- if page.byline -%}
+            {{ page.byline | escape }}
+          {%- elsif author_name == site.author.name -%}
             <a rel="me" href="{{ site.author.url }}">{{ author_name | escape }}</a>
           {%- else -%}
             {{ author_name | escape }}
