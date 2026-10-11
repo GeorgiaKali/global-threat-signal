@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f3ef">
+{% seo %}
+{% feed_meta %}
+{% if page.sample or page.noindex %}
+<meta name="robots" content="noindex, nofollow">
+{% endif %}
+<link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="icon" href="{{ '/assets/favicon.png' | relative_url }}" type="image/png" sizes="32x32">
+<link rel="preload" href="{{ '/assets/fonts/fraunces-latin-500.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin-400.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">

@@ -1,0 +1,62 @@
+title: Global Threat Signal
+tagline: Articles and research
+description: >-
+  Articles and research write-ups by Georgia Kali on global threats,
+  security incidents, and risk intelligence.
+url: https://georgiakali.github.io
+baseurl: /global-threat-signal
+lang: en-US
+timezone: Etc/UTC
+author:
+  name: Georgia Kali
+  url: https://georgiakali.github.io
+  uri: https://georgiakali.github.io
+logo: /assets/logo.png
+social:
+  name: Georgia Kali
+  links:
+    - https://georgiakali.github.io
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  syntax_highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+feed:
+  path: feed.xml
+  posts_limit: 25
+titles_from_headings:
+  enabled: false
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /assets/img/social-card.png
+        height: 630
+        width: 1200
+        alt: Global Threat Signal. Notes on global threats, by Georgia Kali.
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Georgia Kali
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - .gitignore
+  - node_modules

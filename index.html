@@ -1,0 +1,40 @@
+---
+layout: default
+title: Notes on global threats
+---
+<section class="intro">
+  <h1>Notes on global threats</h1>
+  <p class="lede">Writing by <a rel="me" href="https://georgiakali.github.io">Georgia Kali</a> on security incidents and risk intelligence. These notes sit alongside <a href="https://globalthreatsignal.org">Global Threat Signal</a>, the project that maps global risks.</p>
+</section>
+
+{% if site.posts.size == 0 %}
+  <p class="empty">No articles yet.</p>
+{% else %}
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        {% if post.sample %}
+          <p class="sample-flag">Sample — delete this post</p>
+        {% endif %}
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B %Y" }}</time>
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+        <p class="excerpt">
+          {% if post.description %}
+            {{ post.description | escape }}
+          {% else %}
+            {{ post.excerpt | strip_html | normalize_whitespace | truncate: 280 }}
+          {% endif %}
+        </p>
+        <p class="meta-line">
+          {% include reading-time.html post=post %}
+          {% for category in post.categories %}
+            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}">{{ category | escape }}</a>
+          {% endfor %}
+          {% for tag in post.tags %}
+            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag | escape }}</a>
+          {% endfor %}
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

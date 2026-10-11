@@ -1,0 +1,44 @@
+{%- assign bucket = "" -%}
+{%- for post in site.posts -%}
+  {%- assign post_terms = post[include.field] -%}
+  {%- for term in post_terms -%}
+    {%- assign bucket = bucket | append: term | append: "|||" -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- if bucket == "" -%}
+  <p>No {{ include.empty_label }} yet.</p>
+{%- else -%}
+  {%- assign all_terms = bucket | split: "|||" | uniq | sort -%}
+  <ul class="term-jump">
+    {%- for term in all_terms -%}
+      {%- if term != "" -%}
+        <li><a href="#{{ term | slugify }}">{{ term | escape }}</a></li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+  {%- for term in all_terms -%}
+    {%- if term != "" -%}
+      {%- assign n = 0 -%}
+      {%- for post in site.posts -%}
+        {%- assign post_terms = post[include.field] -%}
+        {%- if post_terms contains term -%}
+          {%- assign n = n | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+      <section class="term-section" id="{{ term | slugify }}">
+        <h2>{{ term | escape }} <span class="count">{{ n }}</span></h2>
+        <ul>
+          {%- for post in site.posts -%}
+            {%- assign post_terms = post[include.field] -%}
+            {%- if post_terms contains term -%}
+              <li>
+                <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B %Y" }}</time>
+                <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </section>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

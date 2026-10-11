@@ -1,0 +1,55 @@
+---
+layout: default
+---
+{%- assign author_name = page.author.name | default: page.author | default: site.author.name -%}
+<article class="post">
+  <header class="post-header">
+    {%- if page.categories.size > 0 -%}
+      <p class="kicker">
+        {%- for category in page.categories -%}
+          <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}">{{ category | escape }}</a>{%- unless forloop.last -%}<span aria-hidden="true">, </span>{%- endunless -%}
+        {%- endfor -%}
+      </p>
+    {%- endif -%}
+    <h1>{{ page.title | escape }}</h1>
+    {%- if page.sample -%}
+      <p class="sample-banner" role="note">Sample only. Delete <code>_posts/2026-10-11-sample-delete-me.md</code> before you publish a real article.</p>
+    {%- endif -%}
+    <dl class="cable">
+      <div>
+        <dt>Author</dt>
+        <dd>
+          {%- if author_name == site.author.name -%}
+            <a rel="me" href="{{ site.author.url }}">{{ author_name | escape }}</a>
+          {%- else -%}
+            {{ author_name | escape }}
+          {%- endif -%}
+        </dd>
+      </div>
+      <div>
+        <dt>Date</dt>
+        <dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time></dd>
+      </div>
+      <div>
+        <dt>Read</dt>
+        <dd>{% include reading-time.html %}</dd>
+      </div>
+      <div>
+        <dt>Tags</dt>
+        <dd>
+          {%- if page.tags.size > 0 -%}
+            {%- for tag in page.tags -%}
+              <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag | escape }}</a>{%- unless forloop.last -%}<span aria-hidden="true">, </span>{%- endunless -%}
+            {%- endfor -%}
+          {%- else -%}
+            <span class="quiet">None</span>
+          {%- endif -%}
+        </dd>
+      </div>
+    </dl>
+  </header>
+  <div class="body prose">
+    {{ content }}
+  </div>
+  <p class="post-end"><a href="{{ '/' | relative_url }}">All articles</a></p>
+</article>

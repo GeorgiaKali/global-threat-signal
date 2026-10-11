@@ -1,0 +1,27 @@
+<header class="masthead">
+  <div class="wrap utility">
+    <a rel="me" href="https://georgiakali.github.io">Georgia Kali</a>
+    <a href="https://globalthreatsignal.org">globalthreatsignal.org</a>
+  </div>
+  <div class="wrap nameplate">
+    <a class="nameplate-link" href="{{ '/' | relative_url }}">
+      <svg class="mark" viewBox="0 0 28 16" aria-hidden="true" focusable="false">
+        <rect x="0" y="9" width="4" height="7"></rect>
+        <rect x="8" y="6" width="4" height="10"></rect>
+        <rect x="16" y="3" width="4" height="13"></rect>
+        <rect x="24" y="0" width="4" height="16"></rect>
+      </svg>
+      <span class="site-name">Global Threat Signal</span>
+    </a>
+    <p class="tagline">{{ site.tagline }}</p>
+  </div>
+  <div class="nav-bar">
+    <nav class="wrap primary-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}"{% if page.url == "/" or page.url == "/index.html" %} aria-current="page"{% endif %}>Articles</a>
+      <a href="{{ '/tags/' | relative_url }}"{% if page.url == "/tags/" or page.url == "/tags/index.html" %} aria-current="page"{% endif %}>Tags</a>
+      <a href="{{ '/categories/' | relative_url }}"{% if page.url == "/categories/" or page.url == "/categories/index.html" %} aria-current="page"{% endif %}>Categories</a>
+      <a href="{{ '/about/' | relative_url }}"{% if page.url == "/about/" or page.url == "/about/index.html" %} aria-current="page"{% endif %}>About</a>
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </nav>
+  </div>
+</header>
